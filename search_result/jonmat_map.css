@@ -1,0 +1,95 @@
+h1 {
+    text-align:left; 
+    padding-left: 50px;
+    padding-bottom: 30px;
+}
+
+main .first {
+    display: inline-block;
+}
+
+main .m {
+    padding-left: 50px;
+}
+
+main .s {
+    position:absolute;
+    padding-left: 50px;
+}
+
+main .s h3 {
+    font-size:25px;
+    padding-left: 50px;
+}
+
+main .s ul {
+
+}
+
+main .s ul li {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color:#333;
+}
+
+main form button {
+    margin-top: 40px; 
+    margin-left: 50px; 
+}
+
+main form .naver_button{
+    font-size: 17px;
+    background: #0BC904;
+    border:2px solid #303030;
+    width: 125px; height: 40px;
+}
+
+main form .google_button{
+    font-size: 17px;
+    background: #ea4335;
+    border:2px solid #303030;
+    width: 125px; height: 40px;
+}
+
+main form .kakao_button{
+    font-size: 17px;
+    background: #ffcd01;
+    border: 2px solid #303030;
+    width: 125px; height: 40px;
+}
+
+main .second div{
+    display: inline-block;
+    width:100%;
+}
+
+main .second div h3 {
+    display: inline-block;
+    font-size: 25px;
+    margin-top: 40px; 
+    margin-left: 50px;
+}
+
+main .second div select{
+    float: right;
+    margin-top: 30px; 
+    margin-right: 30px;
+    width: 130px; height: 25px;
+    border:1px solid #333;
+}
+
+main ul {
+    
+}
+
+main ul li {
+    margin-left: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color:#333;
+}
+
+footer {
+    color:#333; text-align: center; 
+    font-size: 0.85rem; margin-top: 200px;
+}

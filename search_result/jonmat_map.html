@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>맛집 검색기 결과 ദ്ദി ˉ͈̀꒳ˉ͈́  ✧ </title>
+     
+        <link rel="stylesheet" href="jonmat_map.css">
+        <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=52ydcamkc0"></script>
+        
+        <!-- 여기부터 -->
+        <script type="text/javascript">
+            async function fetchSearchResults(query) {
+                const clientId = 'Vu2aqGX7dU78M70tu32Z';
+                const clientSecret = 'eiz0z8DTmY';
+                
+                try {
+
+                    const response = await fetch(`http://localhost:5500/search?query=${encodeURIComponent(query)}`);
+                   
+                    if (!response.ok) {
+                        throw new Error('네이버 API 요청 실패');
+                    }
+    
+                    const data = await response.json();
+                    displayResults(data.items);
+                } catch (error) {
+                    console.error(error);
+                    alert('검색 중 오류가 발생했습니다.');
+                }
+            }
+    
+            function displayResults(items) {
+                const resultsContainer = document.getElementById('results');
+                resultsContainer.innerHTML = '';
+    
+                items.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<a href="${item.link}" target="_blank">${item.title} - ${item.category}</a>`;
+                    resultsContainer.appendChild(listItem);
+                });
+            }
+    
+            window.onload = function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const query = urlParams.get('query');
+    
+                if (query) {
+                    document.getElementById('searchQuery').innerText = `#${query}의 리뷰를 보여드릴게요!`;
+                    fetchSearchResults(query);
+                }
+            }
+        </script>
+        <!-- 여기까지 -->
+
+        <script src="jonmat_map.js"></script>
+    </head>
+
+    <body>
+        <h1 id="searchQuery" style="font-size: 3em">#input 의 리뷰를 보여드릴게요!</h1>
+        <main>
+            <div class="first m">
+                <div id="map" style="width:450px;height:400px;"></div>
+                <script>
+                    var mapOptions = {
+                        center: new naver.maps.LatLng(37.3595704, 127.105399),
+                        zoom: 10
+                    };  
+                    var map = new naver.maps.Map('map', mapOptions);
+                </script>
+            </div>
+            <div class="first s">
+                <h3>평균 별점: 3.4</h3>
+                <ul>
+                    <li><a href="#">너무 맛있고 가성비가 어쩌구 …더보기</a></li>
+                    <li><a href="#">★★★★☆ 너무 맛있고 가성비 …더보기</a></li>
+                    <li><a href="#">★★★★☆ 너무 맛있고 가성비 …더보기</a></li>
+                    <li><a href="#">너무 맛있고 가성비가 어쩌구 …더보기</a></li>
+                    <li><a href="#">너무 맛있고 가성비가 어쩌구 …더보기</a></li>
+                    <li><a href="#">★★★★☆ 너무 맛있고 가성비 …더보기</a></li>
+                </ul>
+            </div>
+
+            <form>
+                <button class="naver_button">네이버</button>
+                <button class="google_button">구글맵</button>
+                <button class="kakao_button">카카오맵</button>
+            </form>
+
+            <form class="second">
+                <div>
+                    <h3>평균 별점: 4.52</h3>
+                    <form action="#">
+                        <select name="sort">
+                            <option value="recommand">추천순</option>
+                            <option value="latest">최신순</option>
+                        </select>
+                        <!--input type="submit" value="선택"-->
+                    </form>
+
+                    <ul id="results">
+                        <!-- 네이버 API 검색 결과가 여기에 표시됩니다. -->
+                    </ul>
+                </div>
+            </form>
+
+            <ul>
+                <li><a href="#">1.유저프사 2.유저닉네임 3.유저가이때까지작성한후기수 4.별점(구글/카카오만) 5.사진 6.후기글</a></li>
+                <li><a href="#">1.유저프사 2.유저닉네임 3.유저가이때까지작성한후기수 4.별점(구글/카카오만) 5.사진 6.후기글</a></li>
+                <li><a href="#">1.유저프사 2.유저닉네임 3.유저가이때까지작성한후기수 4.별점(구글/카카오만) 5.사진 6.후기글</a></li>
+                <li><a href="#">1.유저프사 2.유저닉네임 3.유저가이때까지작성한후기수 4.별점(구글/카카오만) 5.사진 6.후기글</a></li>
+                <li><a href="#">1.유저프사 2.유저닉네임 3.유저가이때까지작성한후기수 4.별점(구글/카카오만) 5.사진 6.후기글</a></li>
+                <li><a href="#">1.유저프사 2.유저닉네임 3.유저가이때까지작성한후기수 4.별점(구글/카카오만) 5.사진 6.후기글</a></li>
+            </ul>
+
+        </main>
+        
+        <footer>
+            해당 맛집 검색기는 네이버, 구글맵, 카카오맵의 리뷰를 참고하여 정보를 제공합니다.
+        </footer>
+    </body>
+
+</html>
